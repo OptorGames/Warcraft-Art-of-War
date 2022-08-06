@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class HealthUnit : MonoBehaviour
 {
     public float Health { get; private set; }
-
+    public event Action<GameObject> OnDeath;
     private void Start()
     {
         SetHealth(100);
@@ -19,6 +20,7 @@ public class HealthUnit : MonoBehaviour
         Health -= value;
         if (Health <= 0)
         {
+            OnDeath?.Invoke(gameObject);
             Destroy(gameObject);
         }
     }

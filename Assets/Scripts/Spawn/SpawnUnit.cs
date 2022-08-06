@@ -1,24 +1,23 @@
-using System.Collections;
 using UnityEngine;
 
 namespace Spawn
 {
     public abstract class SpawnUnit : MonoBehaviour
     {
-        [SerializeField] protected SearchEnemyForUnits _searchEnemyForUnits;
+        protected UnitsContainer UnitsContainer;
         [SerializeField] protected GameObject _unit;
-        [SerializeField] protected Transform _unitsContainer;
+        [SerializeField] protected Transform _unitsTransformContainer;
         [SerializeField] protected Transform _pointForSpawn;
         [SerializeField] protected int _countUnit;
 
 
-        private void Awake()
+        protected virtual void Start()
         {
-            SpawnUnits(_countUnit);
+            UnitsContainer = UnitsContainer.Instance;
         }
-        
+
         protected abstract void SpawnUnits(int unitCount);
-        
+
 
         protected abstract void ChangeSpawnPosition();
     }

@@ -5,7 +5,7 @@ namespace Attack
     public class AttackUnit : MonoBehaviour
     {
         public float PowerAttack { get; private set; }
-        public GameObject TargetUnit { get; set; }
+        protected float DelayTime;
 
         protected void Start()
         {
@@ -16,5 +16,7 @@ namespace Attack
         {
             PowerAttack = value;
         }
+
+       
     }
 }

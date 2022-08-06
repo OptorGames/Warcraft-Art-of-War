@@ -4,59 +4,38 @@ using UnityEngine;
 
 public class SearchEnemyForUnits : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _ourUnits;
-    [SerializeField] private List<GameObject> _enemyUnits;
-    public List<GameObject> OurUnits => _ourUnits;
-    public List<GameObject> EnemyUnits => _enemyUnits;
+    private UnitsContainer _unitsContainer;
+
     public bool StartGame { get; set; }
 
     private GameObject _closest;
 
     private void Start()
     {
+        _unitsContainer = UnitsContainer.Instance;
         SetOpponents();
     }
 
     private void Update()
     {
-        ListCleaning();
-    }
-
-    private void ListCleaning()
-    {
-        foreach (var enemyUnit in _enemyUnits)
-        {
-            if (enemyUnit == null)
-            {
-                _enemyUnits.Remove(enemyUnit);
-            }
-        }
-
-        foreach (var ourUnit in _ourUnits)
-        {
-            if (ourUnit == null)
-            {
-                _ourUnits.Remove(ourUnit);
-            }
-        }
-
         SetOpponents();
     }
 
+
     private void SetOpponents()
     {
-        foreach (var ourUnit in _ourUnits)
+        foreach (var ourUnit in _unitsContainer.OurUnits)
         {
-            var enemy = SearchOpponents(ourUnit.transform, _enemyUnits);
+            var enemy = SearchOpponents(ourUnit.transform, _unitsContainer.EnemyUnits);
             ourUnit.GetComponent<MoveUnit>().TargetUnit = enemy;
-            ourUnit.GetComponent<AttackEnemyUnit>().TargetUnit = enemy;
+            ourUnit.GetComponent<MeleeAttack>().TargetUnit = enemy;
         }
 
-        foreach (var enemyUnit in _enemyUnits)
+        foreach (var enemyUnit in _unitsContainer.EnemyUnits)
         {
-            var our = SearchOpponents(enemyUnit.transform, _ourUnits);
+            var our = SearchOpponents(enemyUnit.transform, _unitsContainer.OurUnits);
             enemyUnit.GetComponent<MoveUnit>().TargetUnit = our;
-            enemyUnit.GetComponent<AttackOurUnit>().TargetUnit = our;
+            enemyUnit.GetComponent<MeleeAttack>().TargetUnit = our;
         }
     }
 

@@ -2,19 +2,23 @@
 {
     public class OurUnitSpawner : SpawnUnit
     {
+        protected override void Start()
+        {
+            base.Start();
+            SpawnUnits(_countUnit);
+        }
         protected override void SpawnUnits(int unitCount)
         {
             for (int i = 0; i < unitCount; i++)
             {
-                _searchEnemyForUnits.OurUnits.Add(Instantiate(_unit, _pointForSpawn));
-                _searchEnemyForUnits.OurUnits[i].transform.SetParent(_unitsContainer);
+                var unit = Instantiate(_unit, _pointForSpawn);
+                unit.transform.SetParent(_unitsTransformContainer);
+                UnitsContainer.AddOurUnit( unit);
                 ChangeSpawnPosition();
-                //yield return new WaitForSeconds(0.3f);
             }
         }
 
         protected override void ChangeSpawnPosition()
-
         {
             var position = _pointForSpawn.position;
 
