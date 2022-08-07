@@ -9,6 +9,8 @@ public class UnitsContainer : MonoBehaviour
     [SerializeField] private List<GameObject> _enemyUnits;
     public List<GameObject> OurUnits => _ourUnits;
     public List<GameObject> EnemyUnits => _enemyUnits;
+    public event Action OnWin;
+    public event Action OnLose;
 
     private void Awake()
     {
@@ -38,11 +40,19 @@ public class UnitsContainer : MonoBehaviour
     {
         unit.GetComponent<HealthUnit>().OnDeath -= RemoveOurUnit;
         _ourUnits.Remove(unit);
+        if (OurUnits.Count <= 0)
+        {
+            OnLose?.Invoke();
+        }
     }
 
     public void RemoveEnemyUnit(GameObject unit)
     {
         unit.GetComponent<HealthUnit>().OnDeath -= RemoveEnemyUnit;
         _enemyUnits.Remove(unit);
+        if (EnemyUnits.Count <= 0)
+        {
+            OnWin?.Invoke();
+        }
     }
 }

@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class InterfaceController : MonoBehaviour
 {
@@ -28,25 +26,7 @@ public class InterfaceController : MonoBehaviour
     {
         _enemyUnitCountText.text = _unitsContainer.EnemyUnits.Count.ToString();
         _ourUnitCountText.text = _unitsContainer.OurUnits.Count.ToString();
-        IfLose();
-        IfWin();
     }
 
-    private void IfLose()
-    {
-        if (_unitsContainer.OurUnits.Count <= 0)
-        {
-            Time.timeScale = 0;
-            print("lose!");
-        }
-    }
-
-    private void IfWin()
-    {
-        if (_unitsContainer.EnemyUnits.Count <= 0)
-        {
-            Time.timeScale = 0;
-            print("win!");
-        }
-    }
+    
 }

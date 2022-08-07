@@ -5,20 +5,19 @@ using UnityEngine;
 public class SearchEnemyForUnits : MonoBehaviour
 {
     private UnitsContainer _unitsContainer;
-
-    public bool StartGame { get; set; }
-
     private GameObject _closest;
 
     private void Start()
     {
         _unitsContainer = UnitsContainer.Instance;
-        SetOpponents();
     }
 
     private void Update()
     {
-        SetOpponents();
+        if (GameStageController.StartFight)
+        {
+            SetOpponents();
+        }
     }
 
 

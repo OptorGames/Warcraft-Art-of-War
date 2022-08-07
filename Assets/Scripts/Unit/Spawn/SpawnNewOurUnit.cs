@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Spawn
@@ -14,7 +15,6 @@ namespace Spawn
         private int _countForNewUnit;
         private Ray _ray;
         private Vector3 _worldPosition;
-        private Plane _plane = new Plane(Vector3.down, 0);
 
         protected override void Start()
         {
@@ -25,12 +25,13 @@ namespace Spawn
 
         private void Update()
         {
-            PlusUnitForSpawn();
-
-            if (Input.GetMouseButtonDown(0))
+            if (GameStageController.StartFight)
             {
-                _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                ChangeSpawnPosition();
+                PlusUnitForSpawn();
+                if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+                {
+                    ChangeSpawnPosition();
+                }
             }
         }
 
@@ -71,9 +72,11 @@ namespace Spawn
 
         protected override void ChangeSpawnPosition()
         {
-            if (_plane.Raycast(_ray, out float distance))
+            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(_ray, out var hit) && hit.transform.gameObject.CompareTag("Plane"))
             {
-                _worldPosition = _ray.GetPoint(distance);
+                _worldPosition = hit.point;
                 _pointForSpawn.position = new Vector3(_worldPosition.x, _pointForSpawn.position.y, _worldPosition.z);
                 NewUnit();
             }
