@@ -22,7 +22,17 @@
         protected override void ChangeSpawnPosition()
         {
             var position = _pointForSpawn.position;
-            position.x += 1.4f;
+
+            if (_pointForSpawn.position.x < 4)
+            {
+                position.x += 1.4f;
+            }
+            else
+            {
+                position.x = -4;
+                position.z += 1.4f;
+            }
+
             _pointForSpawn.position = position;
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5614676165162151765}
   - component: {fileID: 7443404208024319607}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Plus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,9 +87,10 @@ GameObject:
   - component: {fileID: 3869585548507709672}
   - component: {fileID: 8526091970039972687}
   - component: {fileID: 5018809835327253487}
+  - component: {fileID: 4749512641838516750}
   m_Layer: 5
   m_Name: "\u0421ell"
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,3 +165,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd18402a0633d49489db22cf11c1c960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _plus: {fileID: 1525986610439612465}
+  _backCell: {fileID: 8526091970039972687}
+--- !u!65 &4749512641838516750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6741349187476400355}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13, y: 13, z: 2}
+  m_Center: {x: 0, y: 0, z: -1}

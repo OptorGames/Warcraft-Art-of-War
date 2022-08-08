@@ -1,9 +1,10 @@
+using Spawn;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Spawn
+namespace LevelGame.Unit.Spawn
 {
     public class SpawnNewOurUnit : SpawnUnit
     {

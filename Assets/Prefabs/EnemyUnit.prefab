@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3816766796711586925}
   - component: {fileID: 3816766796711586931}
   - component: {fileID: 3816766796711586933}
+  - component: {fileID: -559967759996481379}
   m_Layer: 0
   m_Name: EnemyUnit
   m_TagString: EnemyUnit
@@ -124,7 +125,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3816766796711586926}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -176,6 +177,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbcd5d25e184ac99034b33d4d6ffdde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-559967759996481379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816766796711586926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653dfcd2443bfe4a8a2079d972d7f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: 3816766796711586924}
 --- !u!1001 &4769854661546735982
 PrefabInstance:
   m_ObjectHideFlags: 0
