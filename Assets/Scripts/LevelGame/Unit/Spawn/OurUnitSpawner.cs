@@ -1,23 +1,28 @@
-﻿namespace Spawn
+﻿using UnityEngine;
+
+namespace LevelGame.Unit.Spawn
 {
     public class OurUnitSpawner : SpawnUnit
     {
+        [SerializeField] private int _countMeleeUnit;
+        [SerializeField] private int _countRangeUnit;
         protected override void Start()
         {
             base.Start();
-            SpawnUnits(_countUnit);
+            SpawnUnits(_countMeleeUnit,0);
+            SpawnUnits(_countRangeUnit,1);
         }
-        protected override void SpawnUnits(int unitCount)
+        protected override void SpawnUnits(int unitCount,int unitType)
         {
             for (int i = 0; i < unitCount; i++)
             {
                 var unit = Instantiate(_unit, _pointForSpawn);
                 unit.transform.SetParent(_unitsTransformContainer);
+                _unitsInitializer.InitializeUnit(unitType,unit,"Our");
                 UnitsContainer.AddOurUnit( unit);
                 ChangeSpawnPosition();
             }
         }
-
         protected override void ChangeSpawnPosition()
         {
             var position = _pointForSpawn.position;

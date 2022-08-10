@@ -1,18 +1,18 @@
-using LevelGame;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class UnitControl : MonoBehaviour
+namespace LevelGame.Unit
 {
-    [SerializeField] private NavMeshAgent _navMeshAgent;
-
-    public NavMeshAgent NavMeshAgent => _navMeshAgent;
-
-    private void Start()
+    public class UnitControl : MonoBehaviour
     {
-        if (GameStageController.StartFight)
+        public NavMeshAgent NavMeshAgent { get; set; }
+
+        private void Start()
         {
-            _navMeshAgent.enabled = true;
+            if (GameStageController.StartFight)
+            {
+                NavMeshAgent.enabled = true;
+            }
         }
     }
 }

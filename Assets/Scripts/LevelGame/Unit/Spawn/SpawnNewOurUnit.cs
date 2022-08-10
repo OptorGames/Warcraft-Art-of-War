@@ -1,4 +1,5 @@
-using Spawn;
+using System;
+using Money;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,11 +9,14 @@ namespace LevelGame.Unit.Spawn
 {
     public class SpawnNewOurUnit : SpawnUnit
     {
+        [SerializeField] private Coins _coins;
+        [SerializeField] private Camera _camera;
         [SerializeField] private float _waitTimeForNewUnit = 2;
         [SerializeField] private int _maxCountNewUnit = 5;
         [SerializeField] private int _startCountForNewUnit = 1;
         [SerializeField] private Image _buttonImage;
         [SerializeField] private TMP_Text _possibleCountUnitText;
+        private const int NewUnitCost = 50;
         private int _countForNewUnit;
         private Ray _ray;
         private Vector3 _worldPosition;
@@ -22,6 +26,7 @@ namespace LevelGame.Unit.Spawn
             base.Start();
             _countForNewUnit = _startCountForNewUnit;
             _possibleCountUnitText.text = "X:" + _countForNewUnit;
+            BuyNewUnitsButton.OnNewUnit += NewUnit;
         }
 
         private void Update()
@@ -50,37 +55,42 @@ namespace LevelGame.Unit.Spawn
             }
         }
 
-        public void NewUnit()
+        private void NewUnit()
         {
-            if (_countForNewUnit > 0)
+            if (_countForNewUnit > 0 && PlayerPrefs.GetInt("Coins") > NewUnitCost)
             {
+                _coins.ChangeMoneyNumber(NewUnitCost);
                 _countForNewUnit--;
                 _possibleCountUnitText.text = "X:" + _countForNewUnit;
-                SpawnUnits(1);
+                SpawnUnits(1, 0);
             }
         }
 
-        protected override void SpawnUnits(int unitCount)
+        protected override void SpawnUnits(int unitCount, int unitType)
         {
             for (int i = 0; i < unitCount; i++)
             {
                 var unit = Instantiate(_unit, _pointForSpawn);
                 unit.transform.SetParent(_unitsTransformContainer);
+                _unitsInitializer.InitializeUnit(unitType, unit, "Our");
                 UnitsContainer.AddOurUnit(unit);
             }
         }
 
-
         protected override void ChangeSpawnPosition()
         {
-            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+            _ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(_ray, out var hit) && hit.transform.gameObject.CompareTag("Plane"))
             {
                 _worldPosition = hit.point;
                 _pointForSpawn.position = new Vector3(_worldPosition.x, _pointForSpawn.position.y, _worldPosition.z);
                 NewUnit();
             }
+        }
+
+        private void OnDisable()
+        {
+            BuyNewUnitsButton.OnNewUnit -= NewUnit;
         }
     }
 }

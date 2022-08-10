@@ -5,7 +5,7 @@ namespace LevelGame.Unit
 {
     public class MoveUnit : MonoBehaviour
     {
-        [SerializeField] private NavMeshAgent _navMeshAgent;
+        public NavMeshAgent NavMeshAgent { get; set; }
         public GameObject TargetUnit { get; set; }
 
         private void Update()
@@ -18,7 +18,7 @@ namespace LevelGame.Unit
 
         private void GoToTarget()
         {
-            _navMeshAgent.destination = TargetUnit.transform.position;
+            NavMeshAgent.destination = TargetUnit.transform.position;
         }
     }
 }

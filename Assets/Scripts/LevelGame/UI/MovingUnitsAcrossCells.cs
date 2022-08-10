@@ -4,8 +4,10 @@ namespace LevelGame.UI
 {
     public class MovingUnitsAcrossCells : MonoBehaviour
     {
-        
         public static bool HaveObject;
+        [SerializeField] private LayerMask _objectSelectionMask;
+        [SerializeField] private Camera _camera;
+        private const float MAXDistance = 100;
         private Transform _object;
         private Vector3 _startObjectPosition;
         private Vector3 _worldPosition;
@@ -13,7 +15,7 @@ namespace LevelGame.UI
 
         private void Update()
         {
-            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Input.GetMouseButtonDown(0))
             {
                 GetObject();
@@ -39,18 +41,19 @@ namespace LevelGame.UI
             {
                 _object = hit.transform;
                 _startObjectPosition = _object.transform.position;
-                _object.transform.position = new Vector3(_object.transform.position.x, _object.transform.position.y + 2,
-                    _object.transform.position.z);
+                _object.position = new Vector3(_object.position.x, _object.position.y + 2,
+                    _object.position.z);
                 HaveObject = true;
             }
         }
 
         private void MoveObject()
         {
-            if (Physics.Raycast(_ray, out var hit))
+            if (Physics.Raycast(_ray, out var hit, MAXDistance, _objectSelectionMask))
             {
                 _worldPosition = hit.point;
-                _object.position = new Vector3(_worldPosition.x, _object.position.y, _worldPosition.z);
+                var nextPosition = new Vector3(_worldPosition.x, _object.position.y, _worldPosition.z);
+                _object.position = Vector3.Lerp(_object.position, nextPosition, 0.1f);
             }
         }
 
@@ -59,7 +62,7 @@ namespace LevelGame.UI
             if (Physics.Raycast(_ray, out var hit) && hit.transform.gameObject.CompareTag("Cell") &&
                 hit.transform.GetComponent<CellControl>().Available)
             {
-                _object.transform.position = new Vector3(hit.transform.position.x, _object.transform.position.y - 2,
+                _object.position = new Vector3(hit.transform.position.x, _object.transform.position.y - 2,
                     hit.transform.position.z);
                 ;
             }
@@ -67,9 +70,9 @@ namespace LevelGame.UI
             {
                 _object.transform.position = _startObjectPosition;
             }
+
             _object = null;
             HaveObject = false;
         }
     }
 }
-

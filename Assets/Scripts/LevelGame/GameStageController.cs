@@ -1,6 +1,7 @@
 using System.Collections;
 using LevelGame.Unit;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LevelGame
 {
@@ -53,20 +54,20 @@ namespace LevelGame
             }
 
             StartCoroutine(MoveCamera());
-            
         }
 
         private IEnumerator MoveCamera()
         {
-            while (_camera.position!=new Vector3(16.5f, 15, -11.5f))
+            while (_camera.position != new Vector3(16.5f, 15, -11.5f))
             {
-                var nextPosition=new Vector3(16.5f, 15, -11.5f);
-                _camera.position =  Vector3.Lerp(_camera.position,nextPosition,0.05f);
-                var nextRotate= Quaternion.Euler(45, -73, 0);
-                _camera.rotation = Quaternion.Lerp(_camera.rotation,nextRotate,0.05f);
+                var nextPosition = new Vector3(16.5f, 15, -11.5f);
+                _camera.position = Vector3.Lerp(_camera.position, nextPosition, 0.05f);
+                var nextRotate = Quaternion.Euler(45, -73, 0);
+                _camera.rotation = Quaternion.Lerp(_camera.rotation, nextRotate, 0.05f);
                 yield return new WaitForEndOfFrame();
             }
         }
+
         private void EndFight()
         {
             StartFight = false;

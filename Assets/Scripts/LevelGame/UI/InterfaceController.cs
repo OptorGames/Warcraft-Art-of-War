@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using LevelGame.UI;
 using LevelGame.Unit;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace UI
+namespace LevelGame.UI
 {
     public class InterfaceController : MonoBehaviour
     {
@@ -14,6 +13,7 @@ namespace UI
         [SerializeField] private CellControl _cellForUnit;
         [SerializeField] private TMP_Text _enemyUnitCountText;
         [SerializeField] private TMP_Text _ourUnitCountText;
+        [SerializeField] private GameObject _pausePanel;
         private const int CountCell = 49;
 
         private void Start()
@@ -32,6 +32,28 @@ namespace UI
         {
             _enemyUnitCountText.text = _unitsContainer.EnemyUnits.Count.ToString();
             _ourUnitCountText.text = _unitsContainer.OurUnits.Count.ToString();
+        }
+
+        public void MenuButton()
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
+        public void PauseButton()
+        {
+            Time.timeScale = 0;
+            _pausePanel.SetActive(true);
+        }
+
+        public void ContinueButton()
+        {
+            Time.timeScale = 1;   
+            _pausePanel.SetActive(false);
+        }
+
+        public void X3CoinButton()
+        {
+            
         }
     }
 }

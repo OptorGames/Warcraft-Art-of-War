@@ -1,27 +1,30 @@
 using System;
 using UnityEngine;
 
-public class HealthUnit : MonoBehaviour
+namespace LevelGame.Unit
 {
-    public float Health { get; private set; }
-    public event Action<GameObject> OnDeath;
-    private void Start()
+    public class HealthUnit : MonoBehaviour
     {
-        SetHealth(100);
-    }
-
-    public void SetHealth(float value)
-    {
-        Health = value;
-    }
-
-    public void LoseHealth(float value)
-    {
-        Health -= value;
-        if (Health <= 0)
+        [SerializeField] private float _health;
+        public float Health { get; private set; }
+        public event Action<GameObject> OnDeath;
+   
+        public void SetHealth(float value)
         {
-            OnDeath?.Invoke(gameObject);
-            Destroy(gameObject);
+            Health = value;
+            _health = Health;
+            _health = Health;
+        }
+
+        public void LoseHealth(float value)
+        {
+            Health -= value;
+            _health = Health;
+            if (Health <= 0)
+            {
+                OnDeath?.Invoke(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

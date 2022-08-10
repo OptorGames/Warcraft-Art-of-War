@@ -2,21 +2,21 @@
 
 namespace Money
 {
-    public class Cristal : MoneySystem
+    public class Crystals : MoneySystem
     {
         private void Awake()
         {
-            if (!PlayerPrefs.HasKey("Cristals"))
+            if (!PlayerPrefs.HasKey("Crystals"))
             {
-                PlayerPrefs.SetInt("Cristals", 0);
+                PlayerPrefs.SetInt("Crystals", 0);
             }
         }
 
-        protected override void ChangeMoneyNumber(int valueForChange)
+        public override void ChangeMoneyNumber(int valueForChange)
         {
-            var newCoinsValue = PlayerPrefs.GetInt("Coins") - valueForChange;
+            var newCoinsValue = PlayerPrefs.GetInt("Crystals") - valueForChange;
             _moneyText.text = newCoinsValue.ToString();
-            PlayerPrefs.SetInt("Coins", newCoinsValue);
+            PlayerPrefs.SetInt("Crystals", newCoinsValue);
         }
     }
 }
