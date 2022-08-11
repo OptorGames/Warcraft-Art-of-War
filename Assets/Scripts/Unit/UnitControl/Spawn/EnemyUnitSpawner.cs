@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unit;
+using UnityEngine;
 
 namespace LevelGame.Unit.Spawn
 {
@@ -20,7 +21,7 @@ namespace LevelGame.Unit.Spawn
                 var unit = Instantiate(_unit, _pointForSpawn);
                 unit.transform.SetParent(_unitsTransformContainer);
                 unit.transform.rotation=Quaternion.Euler(0,180,0);
-                _unitsInitializer.InitializeUnit(unitType,unit,"Enemy");
+                _unitsInitializer.InitializeUnit(unitType,unit,UnitClass.Enemy);
                 UnitsContainer.AddEnemyUnit(unit);
                 ChangeSpawnPosition();
             }

@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a910f466f4c15d14c8f9cc4f0b23174d, type: 3}
-  m_Name: Range
+  m_Name: Melee
   m_EditorClassIdentifier: 
-  _unitName: Range
-  _moveSpeed: 2
-  _healthNumber: 50
-  _distanceForStop: 7
-  _distanceForAttack: 7
-  _attackPower: 25
+  _unitName: 1
+  _startUnitStats:
+    _moveSpeed: 4.5
+    _healthNumber: 100
+    _attackPower: 10
   _timeForAttack: 0.5
-  _enemyUnitAppearance: {fileID: 1325391217176174, guid: 0f608abc8e090b449b1c9742ffc04674, type: 3}
-  _ourUnitAppearance: {fileID: 1398363425884444, guid: 5ed517bf34ff86045a22464064ad90fa, type: 3}
+  _distanceForStop: 2
+  _distanceForAttack: 2.5
+  _enemyUnitAppearance: {fileID: 1736617742887368, guid: 576727d6523c5844892b9acee18be7ec, type: 3}
+  _ourUnitAppearance: {fileID: 1303046488496336, guid: 3ca3e4f81f12eda4785f90a8b8bd3b56, type: 3}

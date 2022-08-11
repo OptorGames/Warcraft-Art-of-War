@@ -10,6 +10,7 @@ namespace Money
             {
                 PlayerPrefs.SetInt("Crystals", 0);
             }
+            _moneyText.text = PlayerPrefs.GetInt("Crystals").ToString();
         }
 
         public override void ChangeMoneyNumber(int valueForChange)

@@ -1,6 +1,7 @@
 using System;
 using Money;
 using TMPro;
+using Unit;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -43,7 +44,7 @@ namespace LevelGame.Unit.Spawn
 
         private void PlusUnitForSpawn()
         {
-            if (_countForNewUnit <= _maxCountNewUnit)
+            if (_countForNewUnit < _maxCountNewUnit)
             {
                 _buttonImage.fillAmount -= 1.0f / _waitTimeForNewUnit * Time.deltaTime;
                 if (_buttonImage.fillAmount == 0)
@@ -72,7 +73,7 @@ namespace LevelGame.Unit.Spawn
             {
                 var unit = Instantiate(_unit, _pointForSpawn);
                 unit.transform.SetParent(_unitsTransformContainer);
-                _unitsInitializer.InitializeUnit(unitType, unit, "Our");
+                _unitsInitializer.InitializeUnit(unitType, unit, UnitClass.Our);
                 UnitsContainer.AddOurUnit(unit);
             }
         }

@@ -23,7 +23,8 @@ namespace LevelGame.Unit
             if (Health <= 0)
             {
                 OnDeath?.Invoke(gameObject);
-                Destroy(gameObject);
+                    // Destroy(gameObject);
+                    gameObject.SetActive(false);
             }
         }
     }
