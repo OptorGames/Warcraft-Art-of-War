@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using ForUnit;
 using LevelGame.Unit;
 using TMPro;
+using Unit.ForUnit;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,14 +17,16 @@ namespace LevelGame.UI
         [SerializeField] private TMP_Text _enemyUnitCountText;
         [SerializeField] private TMP_Text _ourUnitCountText;
         [SerializeField] private GameObject _pausePanel;
+        public List<CellControl> _cellsContainer;
         private const int CountCell = 49;
 
         private void Start()
         {
             _unitsContainer = UnitsContainer.Instance;
+            _cellsContainer=new List<CellControl>();
             for (int i = 0; i < CountCell; i++)
             {
-               Instantiate(_cellForUnit, _transformForCell);
+                _cellsContainer.Add(Instantiate(_cellForUnit, _transformForCell));
             }
 
             _enemyUnitCountText.text = _unitsContainer.EnemyUnits.Count.ToString();
@@ -37,6 +42,7 @@ namespace LevelGame.UI
         public void MenuButton()
         {
             SceneManager.LoadScene("Menu");
+            Time.timeScale = 1;
         }
 
         public void PauseButton()

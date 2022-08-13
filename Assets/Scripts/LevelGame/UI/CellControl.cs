@@ -15,7 +15,7 @@ namespace LevelGame.UI
             _startBackCellColor = _backCell.color;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("OurUnit"))
             {
@@ -33,15 +33,15 @@ namespace LevelGame.UI
             }
         }
 
-        private void OnMouseEnter()
+        public void MouseEnter()
         {
-            if (MovingUnitsAcrossCells.HaveObject && Available)
+            if (Available)
             {
                 _backCell.color = new Color(0, 0.5f, 1);
             }
         }
 
-        private void OnMouseExit()
+        public void MouseExit()
         {
             _backCell.color = _startBackCellColor;
         }

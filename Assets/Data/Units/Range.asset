@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Range
   m_EditorClassIdentifier: 
   _unitName: 2
-  _startUnitStats:
-    _moveSpeed: 3
+  _unitStats:
+    _level: 1
+    _moveSpeed: 2
     _healthNumber: 50
     _attackPower: 25
   _timeForAttack: 0.5

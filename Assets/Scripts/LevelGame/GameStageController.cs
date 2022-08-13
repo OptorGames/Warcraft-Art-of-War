@@ -1,13 +1,14 @@
-using System.Collections;
+using ForUnit;
+using ForUnit.OnUnit;
 using LevelGame.Unit;
+using Unit.ForUnit;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace LevelGame
 {
     public class GameStageController : MonoBehaviour
     {
-        [SerializeField] private Transform _camera;
+        [SerializeField] private MoveCamera _moveCamera;
         [SerializeField] private GameObject _beforeFight;
         [SerializeField] private GameObject _duringFight;
         [SerializeField] private GameObject _afterFight;
@@ -50,22 +51,15 @@ namespace LevelGame
 
             foreach (var ourUnit in _unitsContainer.OurUnits)
             {
+                if (!ourUnit.activeSelf)
+                {
+                    _unitsContainer.OurUnits.Remove(ourUnit);
+                }
+
                 ourUnit.GetComponent<UnitControl>().NavMeshAgent.enabled = true;
             }
 
-            StartCoroutine(MoveCamera());
-        }
-
-        private IEnumerator MoveCamera()
-        {
-            while (_camera.position != new Vector3(16.5f, 15, -11.5f))
-            {
-                var nextPosition = new Vector3(16.5f, 15, -11.5f);
-                _camera.position = Vector3.Lerp(_camera.position, nextPosition, 0.05f);
-                var nextRotate = Quaternion.Euler(45, -73, 0);
-                _camera.rotation = Quaternion.Lerp(_camera.rotation, nextRotate, 0.05f);
-                yield return new WaitForEndOfFrame();
-            }
+            _moveCamera.SetCameraPosition(CameraPoints.StartGame);
         }
 
         private void EndFight()
