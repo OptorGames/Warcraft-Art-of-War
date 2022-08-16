@@ -1,7 +1,6 @@
 using ForUnit;
 using ForUnit.OnUnit;
 using LevelGame.Unit;
-using Unit.ForUnit;
 using UnityEngine;
 
 namespace LevelGame
@@ -12,15 +11,12 @@ namespace LevelGame
         [SerializeField] private GameObject _beforeFight;
         [SerializeField] private GameObject _duringFight;
         [SerializeField] private GameObject _afterFight;
-        [SerializeField] private GameObject _losePanel;
-        [SerializeField] private GameObject _winPanel;
+        [SerializeField] private MeshRenderer _spawnOurPoint;
         public static bool StartFight;
         private UnitsContainer _unitsContainer;
 
         private void OnDisable()
         {
-            _unitsContainer.OnWin -= IfWin;
-            _unitsContainer.OnLose -= IfLose;
             _unitsContainer.OnWin -= EndFight;
             _unitsContainer.OnLose -= EndFight;
         }
@@ -28,14 +24,13 @@ namespace LevelGame
         private void Start()
         {
             _unitsContainer = UnitsContainer.Instance;
-            _unitsContainer.OnWin += IfWin;
-            _unitsContainer.OnLose += IfLose;
             _unitsContainer.OnWin += EndFight;
             _unitsContainer.OnLose += EndFight;
             StartFight = false;
             _beforeFight.SetActive(true);
             _duringFight.SetActive(false);
             _afterFight.SetActive(false);
+            _spawnOurPoint.enabled = false;
         }
 
         public void StartFightButton()
@@ -44,6 +39,9 @@ namespace LevelGame
             _beforeFight.SetActive(false);
             _duringFight.SetActive(true);
             _afterFight.SetActive(false);
+            _spawnOurPoint.transform.position = new Vector3(6, _spawnOurPoint.transform.position.y, -6);
+            _spawnOurPoint.enabled = true;
+
             foreach (var enemyUnit in _unitsContainer.EnemyUnits)
             {
                 enemyUnit.GetComponent<UnitControl>().NavMeshAgent.enabled = true;
@@ -68,20 +66,6 @@ namespace LevelGame
             _beforeFight.SetActive(false);
             _duringFight.SetActive(false);
             _afterFight.SetActive(true);
-        }
-
-        private void IfLose()
-        {
-            Time.timeScale = 0;
-            print("lose!");
-            _losePanel.SetActive(true);
-        }
-
-        private void IfWin()
-        {
-            Time.timeScale = 0;
-            print("win!");
-            _winPanel.SetActive(true);
         }
     }
 }

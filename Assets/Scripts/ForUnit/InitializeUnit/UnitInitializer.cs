@@ -1,20 +1,22 @@
-using System.Collections.Generic;
-using LevelGame.Unit;
-using Unit.ForUnit;
-using Unit.ForUnit.Attack;
+using ForUnit.OnUnit;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Unit.InitializeUnit
+namespace ForUnit.InitializeUnit
 {
     public abstract class UnitInitializer : MonoBehaviour
     {
-        [SerializeField] protected List<UnitConfig> _unitTypes;
         protected NavMeshAgent NavMeshAgent;
         protected MoveUnit MoveUnit;
         protected HealthUnit HealthUnit;
         protected AttackUnit AttackUnit;
-        protected global::ForUnit.OnUnit.UnitControl UnitControl;
+        protected UnitControl UnitControl;
+        protected UnitsContainer UnitsContainer;
+
+        private void Awake()
+        {
+            UnitsContainer = UnitsContainer.Instance;
+        }
 
         public virtual void InitializeUnit(int unitIndex, GameObject starterUnit)
         {
@@ -24,11 +26,10 @@ namespace Unit.InitializeUnit
             MoveUnit.NavMeshAgent = NavMeshAgent;
             HealthUnit = starterUnit.AddComponent<HealthUnit>();
             AttackUnit = starterUnit.AddComponent<AttackUnit>();
-            UnitControl = starterUnit.AddComponent<global::ForUnit.OnUnit.UnitControl>();
+            UnitControl = starterUnit.AddComponent<UnitControl>();
             UnitControl.NavMeshAgent = NavMeshAgent;
         }
 
-        protected abstract void UpgradeStats(int unitIndex);
-
+        protected abstract void UpgradeStats(UnitConfig unitConfig);
     }
 }

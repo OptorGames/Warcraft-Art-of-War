@@ -6,19 +6,17 @@ namespace ForUnit
     [Serializable]
     public class UnitStat
     {
-        [SerializeField] private int _level = 1;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _healthNumber;
         [SerializeField] private float _attackPower;
-
-        public int Level => _level;
+        [SerializeField] private float _timeForAttack;
+        [SerializeField] private float _distanceForStop;
+        [SerializeField] private float _distanceForAttack;
         public float MoveSpeed => _moveSpeed;
         public float HealthNumber => _healthNumber;
         public float AttackPower => _attackPower;
-
-        public void Upgrade()
-        {
-            _level++;
-        }
+        public float TimeForAttack => _timeForAttack;
+        public float DistanceForStop => _distanceForStop;
+        public float DistanceForAttack => _distanceForAttack;
     }
 }

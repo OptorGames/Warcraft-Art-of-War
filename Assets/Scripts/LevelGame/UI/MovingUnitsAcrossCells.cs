@@ -2,7 +2,6 @@ using System;
 using ForUnit;
 using ForUnit.OnUnit;
 using LevelGame.UI.Barrack;
-using Unit.ForUnit;
 using UnityEngine;
 
 namespace LevelGame.UI

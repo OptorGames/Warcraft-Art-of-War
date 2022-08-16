@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 45581338}
   - component: {fileID: 45581337}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1783,7 +1783,7 @@ GameObject:
   - component: {fileID: 2075337588}
   - component: {fileID: 2075337587}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1801,6 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dbd86d3b524764b9b3ab61c97273c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelText: {fileID: 807021691}
 --- !u!4 &2075337588
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
-﻿using ForUnit.Spawn;
+﻿using ForUnit.InitializeUnit;
+using ForUnit.Spawn;
 using LevelGame.Unit.Spawn;
-using Unit.InitializeUnit;
 using UnityEngine;
 
 namespace Unit.UnitControl.Spawn

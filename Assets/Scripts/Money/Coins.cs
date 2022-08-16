@@ -14,7 +14,7 @@ namespace Money
         }
         public override void ChangeMoneyNumber(int valueForChange)
         {
-            var newCoinsValue = PlayerPrefs.GetInt("Coins") - valueForChange;
+            var newCoinsValue = PlayerPrefs.GetInt("Coins") + valueForChange;
             _moneyText.text = newCoinsValue.ToString();
             PlayerPrefs.SetInt("Coins", newCoinsValue);
         }

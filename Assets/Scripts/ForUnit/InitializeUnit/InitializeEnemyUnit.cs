@@ -1,26 +1,36 @@
 ﻿using UnityEngine;
 
-namespace Unit.InitializeUnit
+namespace ForUnit.InitializeUnit
 {
-    public class InitializeEnemyUnit:UnitInitializer
+    public class InitializeEnemyUnit : UnitInitializer
     {
+        private int _gameLevel;
+
         public override void InitializeUnit(int unitIndex, GameObject starterUnit)
         {
             base.InitializeUnit(unitIndex, starterUnit);
-            NavMeshAgent.speed = _unitTypes[unitIndex].UnitStats.MoveSpeed;
-            NavMeshAgent.stoppingDistance = _unitTypes[unitIndex].DistanceForStop;
-            HealthUnit.SetHealth(_unitTypes[unitIndex].UnitStats.HealthNumber);
-            AttackUnit.SetPower(_unitTypes[unitIndex].UnitStats.AttackPower);
-            AttackUnit.DistanceForAttack = _unitTypes[unitIndex].DistanceForAttack;
-            AttackUnit.TimeForAttack = _unitTypes[unitIndex].TimeForAttack;
-            starterUnit.name = "enemy" + _unitTypes[unitIndex].UnitName;
-            Instantiate(_unitTypes[unitIndex].EnemyUnitAppearance, starterUnit.transform);
+
+            var statsCopy = Instantiate(UnitsContainer.UnitTypes[unitIndex]);
+
+            NavMeshAgent.speed = statsCopy.UnitStats.MoveSpeed;
+            NavMeshAgent.stoppingDistance = statsCopy.UnitStats.DistanceForStop;
+            AttackUnit.DistanceForAttack = statsCopy.UnitStats.DistanceForAttack;
+            AttackUnit.TimeForAttack = statsCopy.UnitStats.TimeForAttack;
+            UpgradeStats( statsCopy);
+
+            starterUnit.name = "enemy" + statsCopy.UnitName;
+
+            var appearance = Instantiate(statsCopy.EnemyUnitAppearance, starterUnit.transform);
+            starterUnit.GetComponent<OnUnit.UnitControl>().Animator = appearance.GetComponent<Animator>();
+            
             starterUnit.tag = "EnemyUnit";
         }
 
-        protected override void UpgradeStats(int unitIndex)
+        protected override void UpgradeStats( UnitConfig unitConfig)
         {
-            
+            _gameLevel = PlayerPrefs.GetInt("GameLevel");
+            HealthUnit.SetHealth(unitConfig.UnitStats.HealthNumber);
+            AttackUnit.SetPower(unitConfig.UnitStats.AttackPower);
         }
     }
 }

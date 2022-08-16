@@ -4,7 +4,6 @@ using ForUnit.Spawn;
 using Money;
 using TMPro;
 using Unit;
-using Unit.InitializeUnit;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

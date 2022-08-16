@@ -7,7 +7,7 @@ public class MoveCamera : MonoBehaviour
     [SerializeField] private Camera _camera;
     public Camera Camera => _camera;
 
-    private readonly Vector3 _positionWhenStartGame = new Vector3(16.5f, 15, -11.5f);
+    private readonly Vector3 _positionWhenStartGame = new Vector3(17f, 15, -10f);
     private readonly Vector3 _positionWhenOpenBarrack = new Vector3(0f, 17f, -15f);
     private readonly Vector3 _positionWhenCloseBarrack = new Vector3(2f, 18, -25f);
     

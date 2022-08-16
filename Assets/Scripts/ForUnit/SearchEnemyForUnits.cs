@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using ForUnit;
-using Unit.ForUnit;
-using Unit.ForUnit.Attack;
+using ForUnit.OnUnit;
+using LevelGame;
 using UnityEngine;
 
-namespace LevelGame.Unit
+namespace ForUnit
 {
     public class SearchEnemyForUnits : MonoBehaviour
     {

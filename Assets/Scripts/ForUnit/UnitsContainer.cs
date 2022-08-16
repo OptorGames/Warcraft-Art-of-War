@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unit.ForUnit;
+using ForUnit.OnUnit;
 using UnityEngine;
 
 namespace ForUnit
@@ -8,8 +8,10 @@ namespace ForUnit
     public class UnitsContainer : MonoBehaviour
     {
         public static UnitsContainer Instance;
+        [SerializeField] private List<UnitConfig> _unitTypes;
         [SerializeField] private List<GameObject> _ourUnits;
         [SerializeField] private List<GameObject> _enemyUnits;
+        public List<UnitConfig> UnitTypes => _unitTypes;
         public List<GameObject> OurUnits => _ourUnits;
         public List<GameObject> EnemyUnits => _enemyUnits;
         public event Action OnWin;

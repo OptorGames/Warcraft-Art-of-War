@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using ForUnit;
 using ForUnit.OnUnit;
 using Unit;
-using Unit.ForUnit;
 using UnityEngine;
 using UnityEngine.UI;
 

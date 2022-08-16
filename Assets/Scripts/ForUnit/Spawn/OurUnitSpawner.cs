@@ -1,6 +1,4 @@
 ﻿using ForUnit.InitializeUnit;
-using ForUnit.OnUnit;
-using Unit.InitializeUnit;
 using UnityEngine;
 
 namespace ForUnit.Spawn
@@ -8,14 +6,16 @@ namespace ForUnit.Spawn
     public class OurUnitSpawner : SpawnUnit
     {
         [SerializeField] protected InitializeOurUnit _initializeOurUnit;
-        [SerializeField] private int _countMeleeUnit;
-        [SerializeField] private int _countRangeUnit;
+        [SerializeField] private int _countUnit1;
+        [SerializeField] private int _countUnit2;
+        [SerializeField] private int _countUnit3;
 
         protected override void Start()
         {
             base.Start();
-            SpawnUnits(_countMeleeUnit, 0);
-            SpawnUnits(_countRangeUnit, 1);
+            SpawnUnits(_countUnit1, 0);
+            SpawnUnits(_countUnit2, 1);
+            SpawnUnits(_countUnit3, 2);
         }
 
         protected override void SpawnUnits(int unitCount, int unitType)

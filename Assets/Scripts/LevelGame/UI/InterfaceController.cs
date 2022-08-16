@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using ForUnit;
 using LevelGame.Unit;
+using Money;
 using TMPro;
-using Unit.ForUnit;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,6 +45,7 @@ namespace LevelGame.UI
             Time.timeScale = 1;
         }
 
+
         public void PauseButton()
         {
             Time.timeScale = 0;
@@ -57,9 +58,6 @@ namespace LevelGame.UI
             _pausePanel.SetActive(false);
         }
 
-        public void X3CoinButton()
-        {
-            
-        }
+        
     }
 }
