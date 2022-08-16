@@ -15,8 +15,8 @@ MonoBehaviour:
   _unitName: 1
   _unitStats:
     _moveSpeed: 3
-    _healthNumber: 100
-    _attackPower: 10
+    _healthNumber: 35
+    _attackPower: 7
     _timeForAttack: 0.5
     _distanceForStop: 2
     _distanceForAttack: 2
