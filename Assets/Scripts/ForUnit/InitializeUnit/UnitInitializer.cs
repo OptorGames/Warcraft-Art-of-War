@@ -11,12 +11,7 @@ namespace ForUnit.InitializeUnit
         protected HealthUnit HealthUnit;
         protected AttackUnit AttackUnit;
         protected UnitControl UnitControl;
-        protected UnitsContainer UnitsContainer;
-
-        private void Awake()
-        {
-            UnitsContainer = UnitsContainer.Instance;
-        }
+        
 
         public virtual void InitializeUnit(int unitIndex, GameObject starterUnit)
         {

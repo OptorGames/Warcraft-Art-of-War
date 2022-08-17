@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using ForUnit;
-using LevelGame.Unit;
-using Money;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

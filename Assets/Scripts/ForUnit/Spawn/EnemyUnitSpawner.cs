@@ -1,20 +1,17 @@
 ﻿using ForUnit.InitializeUnit;
-using ForUnit.Spawn;
-using LevelGame.Unit.Spawn;
 using UnityEngine;
 
-namespace Unit.UnitControl.Spawn
+namespace ForUnit.Spawn
 {
     public class EnemyUnitSpawner : SpawnUnit
     {
-        [SerializeField] protected InitializeEnemyUnit _initializeEnemyUnit;
-        [SerializeField] private int _countMeleeUnit;
-        [SerializeField] private int _countRangeUnit;
+        [SerializeField] private InitializeEnemyUnit _initializeEnemyUnit;
+
         protected override void Start()
         {
             base.Start();
-            SpawnUnits(_countMeleeUnit,0);
-            SpawnUnits(_countRangeUnit,1);
+            SpawnUnits(1,0);
+            SpawnUnits(1,1);
         }
 
         protected override void SpawnUnits(int unitCount,int unitType)

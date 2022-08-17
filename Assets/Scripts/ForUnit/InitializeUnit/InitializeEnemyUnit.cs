@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace ForUnit.InitializeUnit
 {
     public class InitializeEnemyUnit : UnitInitializer
     {
         private int _gameLevel;
+        [SerializeField] private List<UnitConfig> _unitTypes;
+
+
 
         public override void InitializeUnit(int unitIndex, GameObject starterUnit)
         {
             base.InitializeUnit(unitIndex, starterUnit);
 
-            var statsCopy = Instantiate(UnitsContainer.UnitTypes[unitIndex]);
+            var statsCopy = Instantiate(_unitTypes[unitIndex]);
 
             NavMeshAgent.speed = statsCopy.UnitStats.MoveSpeed;
             NavMeshAgent.stoppingDistance = statsCopy.UnitStats.DistanceForStop;

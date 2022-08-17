@@ -1,6 +1,5 @@
 using ForUnit;
 using ForUnit.OnUnit;
-using LevelGame.Unit;
 using UnityEngine;
 
 namespace LevelGame

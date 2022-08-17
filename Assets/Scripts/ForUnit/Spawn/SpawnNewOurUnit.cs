@@ -1,14 +1,12 @@
-using System;
 using ForUnit.InitializeUnit;
-using ForUnit.Spawn;
+using LevelGame;
 using Money;
 using TMPro;
-using Unit;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace LevelGame.Unit.Spawn
+namespace ForUnit.Spawn
 {
     public class SpawnNewOurUnit : SpawnUnit
     {

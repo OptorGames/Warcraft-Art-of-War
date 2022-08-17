@@ -5,17 +5,27 @@ namespace ForUnit.Spawn
 {
     public class OurUnitSpawner : SpawnUnit
     {
-        [SerializeField] protected InitializeOurUnit _initializeOurUnit;
-        [SerializeField] private int _countUnit1;
-        [SerializeField] private int _countUnit2;
-        [SerializeField] private int _countUnit3;
+        [SerializeField] private InitializeOurUnit _initializeOurUnit;
 
         protected override void Start()
         {
             base.Start();
-            SpawnUnits(_countUnit1, 0);
-            SpawnUnits(_countUnit2, 1);
-            SpawnUnits(_countUnit3, 2);
+            SpawnUnits(1, 0);
+            SpawnUnits(1, 1);
+            SpawnUnits(1, 2);
+            SpawnUnits(1, 3);
+            SpawnUnits(1, 4);
+            SpawnUnits(1, 5);
+            SpawnUnits(1, 6);
+            SpawnUnits(1, 7);
+            SpawnUnits(1, 8);
+            SpawnUnits(1, 9);
+            SpawnUnits(1, 10);
+            SpawnUnits(1, 11);
+            SpawnUnits(1, 12);
+            SpawnUnits(1, 13);
+            SpawnUnits(1, 14);
+            SpawnUnits(1, 15);
         }
 
         protected override void SpawnUnits(int unitCount, int unitType)
