@@ -30,11 +30,11 @@ namespace LevelGame.UI.Barrack
         }
 
 
-        public void OnUnit(UnitType type)
+        public void OnUnit(UnitTypes types)
         {
             foreach (var ourUnit in _unitsContainer.OurUnits)
             {
-                if (ourUnit.GetComponent<UnitControl>().UnitName == type && !ourUnit.activeSelf)
+                if (ourUnit.GetComponent<UnitControl>().UnitName == types && !ourUnit.activeSelf)
                 {
                     var position = ourUnit.transform.position;
                     position = new Vector3(position.x, position.y, -17);
@@ -46,7 +46,7 @@ namespace LevelGame.UI.Barrack
             }
         }
 
-        public void NewCardInBarrack(UnitType type)
+        public void NewCardInBarrack(UnitTypes types)
         {
             if (_cardsContainer.Count != 0)
             {
@@ -54,29 +54,29 @@ namespace LevelGame.UI.Barrack
                 {
                     if (!_cardsContainer[i].activeSelf)
                     {
-                        InitializeCard(type, i);
+                        InitializeCard(types, i);
                         _cardsContainer[i].SetActive(true);
                         return;
                     }
                 }
 
                 _cardsContainer.Add(Instantiate(_cardPrefab, _cardsTransform));
-                InitializeCard(type, _cardsContainer.Count - 1);
+                InitializeCard(types, _cardsContainer.Count - 1);
             }
             else
             {
                 _cardsContainer.Add(Instantiate(_cardPrefab, _cardsTransform));
-                InitializeCard(type, _cardsContainer.Count - 1);
+                InitializeCard(types, _cardsContainer.Count - 1);
             }
         }
 
-        private void InitializeCard(UnitType type, int cardIndex)
+        private void InitializeCard(UnitTypes types, int cardIndex)
         {
             _cardsContainer[cardIndex].GetComponent<CardControl>().BarrackController = this;
-            _cardsContainer[cardIndex].GetComponent<CardControl>().UnitType = type;
+            _cardsContainer[cardIndex].GetComponent<CardControl>().UnitTypes = types;
             var cardImage = _cardsContainer[cardIndex].GetComponent<Image>();
 
-            cardImage.sprite = _sprites[(int) type - 1];
+            cardImage.sprite = _sprites[(int) types - 1];
         }
 
         public void OpenedBarack()

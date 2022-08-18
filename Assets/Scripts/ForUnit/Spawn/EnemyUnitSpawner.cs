@@ -14,7 +14,7 @@ namespace ForUnit.Spawn
             {
                 SpawnUnits(1, i);
             }*/
-            SpawnUnits(20, 51);
+            SpawnUnits(20, 48);
 
         }
 

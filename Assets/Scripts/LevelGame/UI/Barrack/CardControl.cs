@@ -9,7 +9,7 @@ namespace LevelGame.UI.Barrack
     public class CardControl : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         public BarrackController BarrackController { get; set; }
-        public UnitType UnitType { get; set; }
+        public UnitTypes UnitTypes { get; set; }
         private Canvas _mainCanvas;
         private RectTransform _rectTransform;
         private Vector2 _startRectTransform;
@@ -30,7 +30,7 @@ namespace LevelGame.UI.Barrack
             _rectTransform.anchoredPosition += eventData.delta/_mainCanvas.scaleFactor;
             if (_rectTransform.anchoredPosition.y > 13)
             {
-                BarrackController.OnUnit(UnitType);
+                BarrackController.OnUnit(UnitTypes);
                 gameObject.SetActive(false);
             }
             else

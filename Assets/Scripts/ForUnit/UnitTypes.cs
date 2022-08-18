@@ -1,6 +1,6 @@
 ﻿namespace ForUnit
 {
-    public enum UnitType
+    public enum UnitTypes
     {
         None = 0,
         Zombie = 1,

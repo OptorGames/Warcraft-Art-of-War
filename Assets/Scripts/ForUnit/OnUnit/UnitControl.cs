@@ -7,7 +7,7 @@ namespace ForUnit.OnUnit
 {
     public class UnitControl : MonoBehaviour
     {
-        public UnitType UnitName { get; set; }
+        public UnitTypes UnitName { get; set; }
         public NavMeshAgent NavMeshAgent { get; set; }
         public Animator Animator { get; set; }
 
