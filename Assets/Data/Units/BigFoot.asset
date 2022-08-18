@@ -20,5 +20,5 @@ MonoBehaviour:
     _timeForAttack: 0
     _distanceForStop: 0
     _distanceForAttack: 0
-  _enemyUnitAppearance: {fileID: 0}
-  _ourUnitAppearance: {fileID: 0}
+  _enemyUnitAppearance: {fileID: 126576, guid: a65ae5efb592850499023fb79ac7a82e, type: 3}
+  _ourUnitAppearance: {fileID: 126576, guid: a65ae5efb592850499023fb79ac7a82e, type: 3}
