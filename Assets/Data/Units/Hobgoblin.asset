@@ -18,7 +18,7 @@ MonoBehaviour:
     _healthNumber: 34
     _attackPower: 8
     _timeForAttack: 0.5
-    _distanceForStop: 1
-    _distanceForAttack: 1
+    _distanceForStop: 1.5
+    _distanceForAttack: 1.5
   _enemyUnitAppearance: {fileID: 117184, guid: 02dac6aa0b2ade64bb3f4514bf1e1524, type: 3}
   _ourUnitAppearance: {fileID: 117184, guid: 02dac6aa0b2ade64bb3f4514bf1e1524, type: 3}

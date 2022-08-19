@@ -33,7 +33,7 @@ namespace ForUnit.OnUnit
                 GetComponent<AttackUnit>().enabled = false;
                 _animator.Play("Die");
                 OnDeath?.Invoke(gameObject);
-                Destroy(gameObject,2);
+                Destroy(gameObject,1.5f);
             }
         }
     }

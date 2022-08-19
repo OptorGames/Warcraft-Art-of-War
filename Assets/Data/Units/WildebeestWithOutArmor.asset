@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitName: 8
   _unitStats:
-    _moveSpeed: 8
+    _moveSpeed: 4
     _healthNumber: 153
     _attackPower: 17
     _timeForAttack: 0.5

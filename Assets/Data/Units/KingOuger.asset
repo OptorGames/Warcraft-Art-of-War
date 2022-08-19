@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitName: 43
   _unitStats:
-    _moveSpeed: 7
+    _moveSpeed: 3
     _healthNumber: 195
     _attackPower: 120
     _timeForAttack: 0.5
-    _distanceForStop: 1
-    _distanceForAttack: 1
+    _distanceForStop: 1.5
+    _distanceForAttack: 1.5
   _enemyUnitAppearance: {fileID: 146028, guid: b68fbd88acc89944d8592ce5351a1bd4, type: 3}
   _ourUnitAppearance: {fileID: 146028, guid: b68fbd88acc89944d8592ce5351a1bd4, type: 3}

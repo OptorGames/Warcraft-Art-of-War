@@ -10,11 +10,10 @@ namespace ForUnit.Spawn
         protected override void Start()
         {
             base.Start();
-            /*for (int i = 0; i < 49; i++)
+            for (int i = 0; i < 49; i++)
             {
                 SpawnUnits(1, i);
-            }*/
-            SpawnUnits(20, 48);
+            }
         }
 
         protected override void SpawnUnits(int unitCount, int unitType)
