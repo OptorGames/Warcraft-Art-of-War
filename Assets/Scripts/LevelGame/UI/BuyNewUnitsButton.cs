@@ -1,31 +1,29 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace LevelGame
+namespace LevelGame.UI
 {
     public class BuyNewUnitsButton : MonoBehaviour
     {
-        [SerializeField] private Button _companyButton;
-        [SerializeField] private TMP_Text _buttonText;
+        [SerializeField] private Button _newUnitButton;
         public static event Action OnNewUnit;
 
         private void Start()
         {
-            _companyButton.onClick.AddListener(ClickButton);
-            _buttonText.text = 50.ToString();
+            _newUnitButton.onClick.AddListener(ClickButton);
         }
 
         private void ClickButton()
         {
             OnNewUnit?.Invoke();
-            _buttonText.text = 50.ToString();
         }
 
         private void OnDestroy()
         {
-            _companyButton.onClick.RemoveListener(ClickButton);
+            _newUnitButton.onClick.RemoveListener(ClickButton);
         }
     }
 }

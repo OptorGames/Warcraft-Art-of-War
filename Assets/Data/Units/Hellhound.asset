@@ -20,5 +20,6 @@ MonoBehaviour:
     _timeForAttack: 0.5
     _distanceForStop: 1.5
     _distanceForAttack: 1.5
+  _newUnitCost: 10
   _enemyUnitAppearance: {fileID: 171188, guid: f81b4a836d08af049b300900715e852a, type: 3}
   _ourUnitAppearance: {fileID: 171188, guid: f81b4a836d08af049b300900715e852a, type: 3}

@@ -1,5 +1,6 @@
 using ForUnit.InitializeUnit;
 using LevelGame;
+using LevelGame.UI;
 using Money;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,9 @@ namespace ForUnit.Spawn
 {
     public class SpawnNewOurUnit : SpawnUnit
     {
+        public int UnitIndex { get; set; } = 0;
+        public int NewUnitCost{ get; set; } = 10;
+
         [SerializeField] protected InitializeOurUnit _initializeOurUnit;
         [SerializeField] private Coins _coins;
         [SerializeField] private Camera _camera;
@@ -18,7 +22,6 @@ namespace ForUnit.Spawn
         [SerializeField] private int _startCountForNewUnit = 1;
         [SerializeField] private Image _buttonImage;
         [SerializeField] private TMP_Text _possibleCountUnitText;
-        private const int NewUnitCost = 50;
         private int _countForNewUnit;
         private Ray _ray;
         private Vector3 _worldPosition;
@@ -64,7 +67,7 @@ namespace ForUnit.Spawn
                 _coins.ChangeMoneyNumber(NewUnitCost);
                 _countForNewUnit--;
                 _possibleCountUnitText.text = "X:" + _countForNewUnit;
-                SpawnUnits(1, 0);
+                SpawnUnits(1, UnitIndex);
             }
         }
 

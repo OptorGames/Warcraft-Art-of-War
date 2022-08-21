@@ -14,18 +14,16 @@ namespace LevelGame.UI.Barrack
         [SerializeField] private List<GameObject> _offOnObjects;
         [SerializeField] private GameObject _barrack;
         [SerializeField] private Transform _cardsTransform;
-
         [SerializeField] private GameObject _cardPrefab;
-
-        //private UnitType _unitType;
-        [SerializeField] private List<Sprite> _sprites;
         private List<GameObject> _cardsContainer;
         private UnitsContainer _unitsContainer;
+        private InterfaceController _interfaceController;
         public bool BarrackOn { get; private set; }
 
         private void Start()
         {
             _unitsContainer = UnitsContainer.Instance;
+            _interfaceController = InterfaceController.Instance;
             _cardsContainer = new List<GameObject>();
         }
 
@@ -75,8 +73,7 @@ namespace LevelGame.UI.Barrack
             _cardsContainer[cardIndex].GetComponent<CardControl>().BarrackController = this;
             _cardsContainer[cardIndex].GetComponent<CardControl>().UnitTypes = types;
             var cardImage = _cardsContainer[cardIndex].GetComponent<Image>();
-
-            cardImage.sprite = _sprites[(int) types - 1];
+            cardImage.sprite = _interfaceController.Sprites[(int) types - 1];
         }
 
         public void OpenedBarack()

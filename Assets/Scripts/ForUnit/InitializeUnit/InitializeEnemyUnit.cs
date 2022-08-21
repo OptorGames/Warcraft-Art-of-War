@@ -7,24 +7,29 @@ namespace ForUnit.InitializeUnit
     {
         private int _gameLevel;
         [SerializeField] private List<UnitConfig> _unitTypes;
+        private UnitConfig _statsCopy;
 
 
 
         public override void InitializeUnit(int unitIndex, GameObject starterUnit)
         {
             base.InitializeUnit(unitIndex, starterUnit);
+            foreach (var unit in _unitTypes)
+            {
+                if (unit.UnitName == (UnitTypes)unitIndex+1)
+                {
+                    _statsCopy = Instantiate(unit);
+                }
+            }
+            NavMeshAgent.speed = _statsCopy.UnitStats.MoveSpeed;
+            NavMeshAgent.stoppingDistance = _statsCopy.UnitStats.DistanceForStop;
+            AttackUnit.DistanceForAttack = _statsCopy.UnitStats.DistanceForAttack;
+            AttackUnit.TimeForAttack = _statsCopy.UnitStats.TimeForAttack;
+            UpgradeStats( _statsCopy);
 
-            var statsCopy = Instantiate(_unitTypes[unitIndex]);
+            starterUnit.name = "enemy" + _statsCopy.UnitName;
 
-            NavMeshAgent.speed = statsCopy.UnitStats.MoveSpeed;
-            NavMeshAgent.stoppingDistance = statsCopy.UnitStats.DistanceForStop;
-            AttackUnit.DistanceForAttack = statsCopy.UnitStats.DistanceForAttack;
-            AttackUnit.TimeForAttack = statsCopy.UnitStats.TimeForAttack;
-            UpgradeStats( statsCopy);
-
-            starterUnit.name = "enemy" + statsCopy.UnitName;
-
-            var appearance = Instantiate(statsCopy.EnemyUnitAppearance, starterUnit.transform);
+            var appearance = Instantiate(_statsCopy.EnemyUnitAppearance, starterUnit.transform);
             starterUnit.GetComponent<OnUnit.UnitControl>().Animator = appearance.GetComponent<Animator>();
             
             starterUnit.tag = "EnemyUnit";

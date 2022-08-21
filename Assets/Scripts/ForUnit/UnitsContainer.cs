@@ -10,8 +10,12 @@ namespace ForUnit
         public static UnitsContainer Instance;
         [SerializeField] private List<GameObject> _ourUnits;
         [SerializeField] private List<GameObject> _enemyUnits;
+        [SerializeField] private List<UnitConfig> _unitTypes;
+
         public List<GameObject> OurUnits => _ourUnits;
         public List<GameObject> EnemyUnits => _enemyUnits;
+
+        public List<UnitConfig> UnitTypes => _unitTypes;
         public event Action OnWin;
         public event Action OnLose;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ForUnit;
 using TMPro;
@@ -8,20 +9,34 @@ namespace LevelGame.UI
 {
     public class InterfaceController : MonoBehaviour
     {
-        private UnitsContainer _unitsContainer;
-
+        public static InterfaceController Instance;
+        public List<CellControl> _cellsContainer;
+        [SerializeField] private List<Sprite> _sprites;
         [SerializeField] private Transform _transformForCell;
         [SerializeField] private CellControl _cellForUnit;
         [SerializeField] private TMP_Text _enemyUnitCountText;
         [SerializeField] private TMP_Text _ourUnitCountText;
         [SerializeField] private GameObject _pausePanel;
-        public List<CellControl> _cellsContainer;
+        private UnitsContainer _unitsContainer;
         private const int CountCell = 49;
+
+        public List<Sprite> Sprites => _sprites;
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else if (Instance == this)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
             _unitsContainer = UnitsContainer.Instance;
-            _cellsContainer=new List<CellControl>();
+            _cellsContainer = new List<CellControl>();
             for (int i = 0; i < CountCell; i++)
             {
                 _cellsContainer.Add(Instantiate(_cellForUnit, _transformForCell));
@@ -52,10 +67,8 @@ namespace LevelGame.UI
 
         public void ContinueButton()
         {
-            Time.timeScale = 1;   
+            Time.timeScale = 1;
             _pausePanel.SetActive(false);
         }
-
-        
     }
 }

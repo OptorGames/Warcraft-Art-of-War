@@ -7,22 +7,29 @@ namespace ForUnit.InitializeUnit
     public class InitializeOurUnit : UnitInitializer
     {
         [SerializeField] private List<UnitConfig> _unitTypes;
+        private UnitConfig _statsCopy;
 
         public override void InitializeUnit(int unitIndex, GameObject starterUnit)
         {
             base.InitializeUnit(unitIndex, starterUnit);
-            var statsCopy = Instantiate(_unitTypes[unitIndex]);
+            foreach (var unit in _unitTypes)
+            {
+                if (unit.UnitName == (UnitTypes)unitIndex+1)
+                {
+                    _statsCopy = Instantiate(unit);
+                }
+            }
 
-            NavMeshAgent.speed = statsCopy.UnitStats.MoveSpeed;
-            UnitControl.UnitName = statsCopy.UnitName;
-            NavMeshAgent.stoppingDistance = statsCopy.UnitStats.DistanceForStop;
-            AttackUnit.DistanceForAttack = statsCopy.UnitStats.DistanceForAttack;
-            AttackUnit.TimeForAttack = statsCopy.UnitStats.TimeForAttack;
-            UpgradeStats(statsCopy);
+            NavMeshAgent.speed = _statsCopy.UnitStats.MoveSpeed;
+            UnitControl.UnitName = _statsCopy.UnitName;
+            NavMeshAgent.stoppingDistance = _statsCopy.UnitStats.DistanceForStop;
+            AttackUnit.DistanceForAttack = _statsCopy.UnitStats.DistanceForAttack;
+            AttackUnit.TimeForAttack = _statsCopy.UnitStats.TimeForAttack;
+            UpgradeStats(_statsCopy);
 
-            starterUnit.name = "our" + statsCopy.UnitName;
+            starterUnit.name = "our" + _statsCopy.UnitName;
 
-            var appearance = Instantiate(statsCopy.OurUnitAppearance, starterUnit.transform);
+            var appearance = Instantiate(_statsCopy.OurUnitAppearance, starterUnit.transform);
             starterUnit.GetComponent<UnitControl>().Animator = appearance.GetComponent<Animator>();
 
             starterUnit.tag = "OurUnit";
