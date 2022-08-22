@@ -1,10 +1,8 @@
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace LevelGame.UI
+namespace LevelGame.UI.NewUnit
 {
     public class BuyNewUnitsButton : MonoBehaviour
     {

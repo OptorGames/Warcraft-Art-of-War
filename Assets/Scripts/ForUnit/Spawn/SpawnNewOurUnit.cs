@@ -1,6 +1,6 @@
 using ForUnit.InitializeUnit;
 using LevelGame;
-using LevelGame.UI;
+using LevelGame.UI.NewUnit;
 using Money;
 using TMPro;
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace ForUnit.Spawn
 {
     public class SpawnNewOurUnit : SpawnUnit
     {
-        public int UnitIndex { get; set; } = 0;
+        public int UnitIndex { get; set; }
         public int NewUnitCost{ get; set; } = 10;
 
         [SerializeField] protected InitializeOurUnit _initializeOurUnit;
@@ -64,7 +64,7 @@ namespace ForUnit.Spawn
         {
             if (_countForNewUnit > 0 && PlayerPrefs.GetInt("Coins") >= NewUnitCost)
             {
-                _coins.ChangeMoneyNumber(NewUnitCost);
+                _coins.ChangeMoneyNumber(-NewUnitCost);
                 _countForNewUnit--;
                 _possibleCountUnitText.text = "X:" + _countForNewUnit;
                 SpawnUnits(1, UnitIndex);

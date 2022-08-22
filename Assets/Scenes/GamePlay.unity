@@ -36486,7 +36486,6 @@ GameObject:
   - component: {fileID: 1460935205}
   - component: {fileID: 1460935204}
   - component: {fileID: 1460935203}
-  - component: {fileID: 1460935202}
   m_Layer: 0
   m_Name: SelectButton
   m_TagString: Untagged
@@ -36516,20 +36515,6 @@ RectTransform:
   m_AnchoredPosition: {x: -200.39832, y: 197}
   m_SizeDelta: {x: 198.4497, y: 249.2025}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1460935202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460935200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf4e1e8667cc9694fa00bb33b45e8101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _newUnitButton: {fileID: 1460935203}
-  _buttonText: {fileID: 930026928}
 --- !u!114 &1460935203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42834,6 +42819,7 @@ MonoBehaviour:
   - {fileID: 605390864}
   - {fileID: 1051426030}
   - {fileID: 1645089230}
+  - {fileID: 935028866}
   _barrack: {fileID: 302113341}
   _cardsTransform: {fileID: 387491389}
   _cardPrefab: {fileID: 6792713662308491043, guid: 5667c3dbe0fdefa44bb602eedd2f6bf5, type: 3}
@@ -44506,7 +44492,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _newUnitButton: {fileID: 1782004342}
-  _buttonText: {fileID: 1554737051}
 --- !u!1 &1782790430
 GameObject:
   m_ObjectHideFlags: 0
